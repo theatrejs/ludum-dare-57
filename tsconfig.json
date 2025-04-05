@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+
+        "allowJs": true,
+        "baseUrl": "./",
+        "checkJs": true,
+        "esModuleInterop": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "noEmit": true,
+        "outDir": "types",
+        "paths": {
+
+            "actors/*": ["sources/actors/*"],
+            "stages/*": ["sources/stages/*"],
+            "states/*": ["sources/states/*"]
+        },
+        "resolveJsonModule": true,
+        "strict": true,
+        "strictNullChecks": false,
+        "target": "esnext"
+    },
+    "exclude": [
+
+        "distribution"
+    ],
+    "include": [
+
+        "node_modules/@theatrejs/plugin-aseprite",
+        "node_modules/@theatrejs/plugin-ldtk",
+        "node_modules/@theatrejs/theatrejs",
+
+        "sources/**/*.js",
+        "sources/types/**/*.d.ts",
+        "sources/types/**/*.jsdoc.js",
+    ]
+}

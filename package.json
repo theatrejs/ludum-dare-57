@@ -1,0 +1,73 @@
+{
+    "author": "Alexandre Blondeau",
+    "dependencies": {
+
+        "@theatrejs/plugin-aseprite": "1.7.1",
+        "@theatrejs/plugin-ldtk": "1.1.0",
+        "@theatrejs/theatrejs": "1.15.0"
+    },
+    "description": "🎮 Ludum Dare 57 - UNNAMED.",
+    "devDependencies": {
+
+        "@theatrejs/loader-aseprite": "1.4.0",
+        "@theatrejs/loader-ldtk": "1.0.1",
+        "@theatrejs/loader-reaper": "1.0.0",
+        "dotenv": "16.4.5",
+        "electron": "28.2.2",
+        "electron-packager": "17.1.2",
+        "file-loader": "6.2.0",
+        "webpack": "5.94.0",
+        "webpack-cli": "4.10.0",
+        "webpack-dev-server": "4.8.0",
+        "webpack-merge": "5.0.0"
+    },
+    "engines": {
+
+        "node": "16.13.0",
+        "npm": "8.1.0"
+    },
+    "keywords": [
+
+        "2d",
+        "canvas",
+        "engine",
+        "game",
+        "game-engine",
+        "html",
+        "html5",
+        "javascript",
+        "pixel-art",
+        "theatrejs",
+        "webgl",
+        "webgl2"
+    ],
+    "license": "UNLICENSED",
+    "name": "@theatrejs/ludum-dare-57",
+    "private": "true",
+    "repository": {
+
+        "type": "git",
+        "url": "git+https://github.com/theatrejs/ludum-dare-57.git"
+    },
+    "scripts": {
+
+        "desktop": "npm run desktop:distribution && npm run desktop:clean:desktop && npm run desktop:generate:window:64",
+        "desktop:clean:desktop": "rm -rf ./desktop/",
+        "desktop:clean:distribution": "rm -rf ./tools/electron/distribution/",
+        "desktop:copy:distribution": "cp -r ./distribution/ ./tools/electron/distribution/",
+        "desktop:distribution": "npm run distribution && npm run desktop:clean:distribution && npm run desktop:copy:distribution",
+        "desktop:generate:window:64": "electron-packager ./tools/electron/ LudumDare57 --arch=x64 --asar --executableName=launcher --icon=./tools/electron/distribution/favicon.ico --out=desktop/ --overwrite --platform=win32",
+        "desktop:start": "npm run desktop:start:development",
+        "desktop:start:development": "npm run desktop:distribution && electron ./tools/electron/electron.development.js",
+        "desktop:start:production": "npm run desktop:distribution && electron ./tools/electron/electron.production.js",
+        "distribution": "npm run distribution:clean && npm run distribution:generate",
+        "distribution:clean": "rm -rf ./distribution/bundle/",
+        "distribution:generate": "webpack --config ./webpack.production.js",
+        "distribution:start": "webpack-dev-server --config ./webpack.development.js --port 1337",
+        "github-pages": "npm run github-pages:distribution && npm run github-pages:clean && npm run github-pages:copy",
+        "github-pages:clean": "rm -rf ./docs/",
+        "github-pages:copy": "cp -r ./distribution/ ./docs/",
+        "github-pages:distribution": "npm run distribution",
+        "start": "npm run distribution:start"
+    }
+}

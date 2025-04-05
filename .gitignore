@@ -1,0 +1,6 @@
+node_modules/
+
+.env
+.ldtk/
+.reaper/
+npm-debug.log

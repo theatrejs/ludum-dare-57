@@ -1,0 +1,5 @@
+{
+    "author": "Alexandre Blondeau",
+    "license": "MIT",
+    "main": "electron.production.js"
+}

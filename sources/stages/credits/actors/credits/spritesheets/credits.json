@@ -1,0 +1,23 @@
+{ "frames": [
+   {
+    "filename": "idle#@credits.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "sourceSize": { "w": 256, "h": 128 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.9-x64",
+  "image": "credits.png",
+  "format": "RGBA8888",
+  "size": { "w": 256, "h": 128 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "idle", "from": 0, "to": 0, "direction": "forward" }
+  ]
+ }
+}
