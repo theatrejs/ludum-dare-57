@@ -12,7 +12,7 @@ class StagePrototype extends FACTORIES.StageWithPreloadables([
      */
     onCreate() {
 
-        this.engine.setColor(new Vector3(34 / 255, 32 / 255, 52 / 255));
+        this.engine.setColor(new Vector3(0 / 255, 0 / 255, 0 / 255));
         this.engine.setResolution(new Vector2(480, 360));
 
         this.createActor(ControllerPrototype);
