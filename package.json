@@ -6,7 +6,7 @@
         "@theatrejs/plugin-ldtk": "1.1.0",
         "@theatrejs/theatrejs": "1.15.0"
     },
-    "description": "🎮 Ludum Dare 57 - UNNAMED.",
+    "description": "🎮 Ludum Dare 57 - Souls Rider 1D.",
     "devDependencies": {
 
         "@theatrejs/loader-aseprite": "1.4.0",
@@ -36,6 +36,8 @@
         "html",
         "html5",
         "javascript",
+        "ludum-dare",
+        "ludum-dare-57",
         "pixel-art",
         "theatrejs",
         "webgl",
