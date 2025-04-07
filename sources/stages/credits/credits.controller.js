@@ -86,7 +86,7 @@ class ControllerCredits extends FACTORIES.ActorWithPreloadables([
                 $onEnter: () => {
 
                     this.$actorCredits = this.stage.createActor(ActorCredits)
-                    .translateTo(new Vector2(0, 32))
+                    .translateTo(new Vector2(0, 64))
                     .setZIndex(getStateZIndexInterface());
                 },
                 $transitions: [
@@ -102,7 +102,7 @@ class ControllerCredits extends FACTORIES.ActorWithPreloadables([
                 $onEnter: () => {
 
                     this.$actorLudumDare = this.stage.createActor(ActorLudumDare)
-                    .translateTo(new Vector2(0, -80))
+                    .translateTo(new Vector2(0, -96))
                     .setZIndex(getStateZIndexInterface());
                 },
                 $transitions: [

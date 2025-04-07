@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "7.34/win64" 1742674166
+<REAPER_PROJECT 0.1 "7.34/win64" 1743985139
   <NOTES 0 2
   >
   RIPPLE 0
@@ -18,9 +18,9 @@
   VIDEO_CONFIG 0 0 65792
   PANMODE 3
   PANLAWFLAGS 3
-  CURSOR 2
-  ZOOM 100 0 0
-  VZOOMEX 6 0
+  CURSOR 0.5
+  ZOOM 608.83426482928803 0 0
+  VZOOMEX 7.55687046 0
   USE_REC_CFG 0
   RECMODE 1
   SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
@@ -98,8 +98,80 @@
   >
   <PROJBAY
   >
-  <TRACK {25981E40-D785-49AF-B517-0F1CCCE409E6}
-    NAME Portal2_sfx_button_positive
+  <TRACK {79C6DF5F-CC5F-4B60-849B-03C60F145F40}
+    NAME ""
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    PANLAWFLAGS 3
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 1 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 0 0 0
+    FIXEDLANES 9 0 0 0 0
+    SEL 1
+    REC 0 0 1 0 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 0 0 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {79C6DF5F-CC5F-4B60-849B-03C60F145F40}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 0.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {89393C34-2987-4685-889E-7D1694C8EE5E}
+      IID 1
+      NAME 01-250407_0212.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 2
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {E86660AF-C7BE-4BE0-9005-DD139B926EC0}
+      RECPASS 1
+      <SOURCE WAVE
+        FILE "C:\Users\deformhead\Documents\REAPER Media\01-250407_0212.wav"
+      >
+    >
+    <ITEM
+      POSITION 0.5
+      SNAPOFFS 0
+      LENGTH 0.5
+      LOOP 1
+      ALLTAKES 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {89A4104C-41A4-4DAD-90E0-417D9B7DB5DD}
+      IID 1
+      NAME 01-250407_0212.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 2.5
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {FB30FBB8-3BCE-4C91-9F83-CF6BE21023F0}
+      RECPASS 1
+      <SOURCE WAVE
+        FILE "C:\Users\deformhead\Documents\REAPER Media\01-250407_0212.wav"
+      >
+    >
+  >
+  <TRACK {A20BE00F-2800-4BBA-BC5B-31478EBDE718}
+    NAME ""
     PEAKCOL 16576
     BEAT -1
     AUTOMODE 0
@@ -119,31 +191,31 @@
     INQ 0 0 0 0.5 100 0 0 100
     NCHAN 2
     FX 1
-    TRACKID {25981E40-D785-49AF-B517-0F1CCCE409E6}
+    TRACKID {A20BE00F-2800-4BBA-BC5B-31478EBDE718}
     PERF 0
     MIDIOUT -1
     MAINSEND 1 0
     <ITEM
       POSITION 0
       SNAPOFFS 0
-      LENGTH 1.532517
+      LENGTH 1
       LOOP 1
       ALLTAKES 0
-      FADEIN 1 0 0 1 0 0 0
-      FADEOUT 1 0 0 1 0 0 0
+      FADEIN 1 0.01 0 1 0 0 0
+      FADEOUT 1 0.01 0 1 0 0 0
       MUTE 0 0
-      SEL 1
-      IGUID {15786807-E381-467E-9054-1E4B1299055A}
-      IID 1
-      NAME Portal2_sfx_button_positive.m4a
+      SEL 0
+      IGUID {96C70E02-19FD-4C61-86AD-1EFFE296D540}
+      IID 3
+      NAME 02-250407_0216.wav
       VOLPAN 1 0 1 -1
-      SOFFS 0
+      SOFFS 3.5
       PLAYRATE 1 1 0 -1 0 0.0025
       CHANMODE 0
-      GUID {A4A08572-6545-4D30-B082-75E8ADE2BE53}
-      <SOURCE VIDEO
-        FLIP 0 1
-        FILE "C:\Users\deformhead\Documents\WORK\THEATREJS\Portal2_sfx_button_positive.m4a"
+      GUID {7BEE64B4-299B-4887-81D8-9C8E227C9E3B}
+      RECPASS 2
+      <SOURCE WAVE
+        FILE "C:\Users\deformhead\Documents\WORK\THEATREJS\ludum-dare-57\sources\stages\splash-screen\actors\press-any-key\sounds\.reaper/Media\02-250407_0216.wav"
       >
     >
   >

@@ -5,6 +5,7 @@ import * as ACTIONS from './hero.actions.js';
 import * as STATES from './hero.states.js';
 import asepriteHero from './spritesheets/hero.aseprite';
 import soundActivate from './sounds/activate.rpp';
+import { getOrientation } from 'states/orientation.state.js';
 
 /**
  * @extends {Actor<(ACTIONS.START), (STATES.ACTIVATED | STATES.DEACTIVATED | STATES.ENTERED | STATES.LEFT | STATES.STARTED)>}
@@ -16,7 +17,7 @@ class ActorHero extends FACTORIES.ActorWithPreloadables([
 ]) {
 
     /**
-     * @typedef {('activated' | 'idle')} TypeTagAseprite An Aseprite tags.
+     * @typedef {('east' | | 'fly' | 'north' | 'south' | 'west')} TypeTagAseprite An Aseprite tags.
      */
 
     /**
@@ -51,6 +52,11 @@ class ActorHero extends FACTORIES.ActorWithPreloadables([
         this.$trigger(STATES.LEFT);
     }
 
+    actionFly() {
+
+        this.$spritesheet.animate('fly', false);
+    }
+
     /**
      * @type {Actor['onCreate']}
      */
@@ -59,17 +65,24 @@ class ActorHero extends FACTORIES.ActorWithPreloadables([
         this.$setListener(ACTIONS.START, this.$actionStart.bind(this));
 
         this.$spritesheet = new PLUGIN_ASEPRITE.Spritesheet(/** @type {PLUGIN_ASEPRITE.Aseprite<TypeTagAseprite>} **/(asepriteHero));
-        this.$spritesheet.animate('idle');
+
+        switch (getOrientation()) {
+
+            case 'EAST': this.$spritesheet.animate('east'); break;
+            case 'NORTH': this.$spritesheet.animate('north'); break;
+            case 'SOUTH': this.$spritesheet.animate('south'); break;
+            case 'WEST': this.$spritesheet.animate('west'); break;
+        }
 
         this.setCollider(new Collider({
 
             $boundaries: new AABB(
 
-                new Vector2(-8, -8),
-                new Vector2(8, 8)
+                new Vector2(-0.5, -0.5),
+                new Vector2(0.5, 0.5)
             ),
             $traversable: true,
-            $type: COLLIDERTYPES.STATIC
+            $type: COLLIDERTYPES.DYNAMIC
         }));
     }
 

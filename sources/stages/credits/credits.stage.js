@@ -12,8 +12,8 @@ class StageCredits extends FACTORIES.StageWithPreloadables([
      */
     onCreate() {
 
-        this.engine.setColor(new Vector3(0 / 255, 0 / 255, 0 / 255));
-        this.engine.setResolution(new Vector2(480, 360));
+        this.engine.setColor(new Vector3(6 / 255, 6 / 255, 8 / 255));
+        this.engine.setResolution(new Vector2(320, 240));
 
         this.createActor(ControllerCredits);
     }

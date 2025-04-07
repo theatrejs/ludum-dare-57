@@ -1,11 +1,29 @@
 { "frames": [
    {
     "filename": "idle#@title.aseprite",
-    "frame": { "x": 0, "y": 0, "w": 256, "h": 128 },
+    "frame": { "x": 0, "y": 0, "w": 320, "h": 320 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 256, "h": 128 },
-    "sourceSize": { "w": 256, "h": 128 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 320, "h": 320 },
+    "sourceSize": { "w": 320, "h": 320 },
+    "duration": 100
+   },
+   {
+    "filename": "idle#@title.aseprite",
+    "frame": { "x": 320, "y": 0, "w": 320, "h": 320 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 320, "h": 320 },
+    "sourceSize": { "w": 320, "h": 320 },
+    "duration": 100
+   },
+   {
+    "filename": "idle#@title.aseprite",
+    "frame": { "x": 640, "y": 0, "w": 320, "h": 320 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 320, "h": 320 },
+    "sourceSize": { "w": 320, "h": 320 },
     "duration": 100
    }
  ],
@@ -14,10 +32,10 @@
   "version": "1.2.9-x64",
   "image": "title.png",
   "format": "RGBA8888",
-  "size": { "w": 256, "h": 128 },
+  "size": { "w": 1024, "h": 512 },
   "scale": "1",
   "frameTags": [
-   { "name": "idle", "from": 0, "to": 0, "direction": "forward" }
+   { "name": "idle", "from": 0, "to": 2, "direction": "forward" }
   ]
  }
 }

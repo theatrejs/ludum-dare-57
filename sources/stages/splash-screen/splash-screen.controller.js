@@ -84,7 +84,7 @@ class ControllerSplashScreen extends FACTORIES.ActorWithPreloadables([
                 $onEnter: () => {
 
                     this.$actorTitle = this.stage.createActor(ActorTitle)
-                    .translateTo(new Vector2(0, 32))
+                    .translateTo(new Vector2(0, 64))
                     .setZIndex(getStateZIndexInterface());
                 },
                 $transitions: [
@@ -100,7 +100,7 @@ class ControllerSplashScreen extends FACTORIES.ActorWithPreloadables([
                 $onEnter: () => {
 
                     this.$actorPressAnyKey = this.stage.createActor(ActorPressAnyKey)
-                    .translateTo(new Vector2(0, -80))
+                    .translateTo(new Vector2(0, -96))
                     .setZIndex(getStateZIndexInterface());
                 },
                 $transitions: [

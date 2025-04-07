@@ -1,6 +1,9 @@
-import {Actor, EVENTCODES, FACTORIES, FiniteStateMachine, Vector2} from '@theatrejs/theatrejs';
+import {Actor, EVENTCODES, FACTORIES, FiniteStateMachine, Sound, Vector2} from '@theatrejs/theatrejs';
 
 import ActorExit from 'actors/exit/exit.actor.js';
+import * as STATES_EXIT from 'actors/exit/exit.states.js';
+
+import ActorFloor from 'actors/floor/floor.actor.js';
 
 import ActorHero from 'actors/hero/hero.actor.js';
 
@@ -18,24 +21,52 @@ import stages from 'stages/stages.ldtk';
 
 import {stateLevel, getLevel, getLineFromNorth, getLineFromSouth, getLineFromWest, getPositionHero, getLineFromEast, checkMoveHeroLeftFromOrientation, checkMoveHeroRightFromOrientation, moveHeroLeftFromOrientation, moveHeroRightFromOrientation} from 'states/level.state.js';
 import {setOrientationCCW, setOrientationCW, stateOrientation} from 'states/orientation.state.js';
+import { getNextLevel, stateLevelCurrent } from 'states/levels.state.js';
+import StageCredits from 'stages/credits/credits.stage.js';
+import StagePrototype from './prototype.stage.js';
+
+import ActorControls from './actors/controls/controls.actor.js';
+
+import soundTeleport from '../../actors/hero/sounds/teleport.rpp';
+import soundBreathe from '../../actors/hero/sounds/breathe.rpp';
+import soundRoll from '../../actors/hero/sounds/roll.rpp';
+import soundWoosh from '../../actors/hero/sounds/woosh.rpp';
+import soundAmbiant from '../../actors/hero/sounds/ambiant.rpp';
 
 class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
 
+    ActorControls,
     ActorExit,
+    ActorFloor,
     ActorHero,
     ActorHole,
     ActorLogicGateAnd,
     ActorTimer1000,
     ActorWall,
 
-    ActorTemple
+    ActorTemple,
+    FACTORIES.PreloadableSound(soundTeleport),
+    FACTORIES.PreloadableSound(soundBreathe),
+    FACTORIES.PreloadableSound(soundRoll),
+    FACTORIES.PreloadableSound(soundWoosh),
+    FACTORIES.PreloadableSound(soundAmbiant),
 ]) {
 
     /**
-     * @typedef {('IDLE' | 'SWITCHING_CCW' | 'SWITCHING_CW' | 'WALKING_LEFT' | 'WALKING_RIGHT')} TypeStateMachine A finite state machine state.
+     * @typedef {('EXITING' | 'IDLE' | 'LEAVING' | 'SWITCHING_CCW' | 'SWITCHING_CW' | 'WALKING_LEFT' | 'WALKING_RIGHT')} TypeStateMachine A finite state machine state.
      */
 
     $actors = [];
+
+    /**
+     * @type {Actor}
+     */
+    $hero;
+
+    /**
+     * @type {boolean}
+     */
+    $exiting;
 
     /**
      * Stores the finite state machine.
@@ -44,22 +75,33 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
      */
     $machine;
 
+    $controls;
+
     $createLevel() {
+
+        this.addSound(new Sound({
+
+            $audio: soundAmbiant,
+            $loop: true
+        }));
+
+        // this.$controls = this.stage.createActor(ActorControls)
+        // .setZIndex(1000)
 
         const grid = stages.getGrid({
 
-            $level: 'Underground2',
+            $level: stateLevelCurrent.getState(),
             $layer: 'actors'
         });
 
         const gridData = stages.getGridData({
 
-            $level: 'Underground2',
+            $level: stateLevelCurrent.getState(),
             $layer: 'actors'
         });
 
-        console.log(grid);
-        console.log(gridData);
+        // console.log(grid);
+        // console.log(gridData);
 
         const level = [];
 
@@ -82,10 +124,14 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
 
         stateLevel.setState(level);
 
-        console.log(
-            // getLevel(),
-            getLineFromWest(getPositionHero()));
+        // console.log(
+        //     // getLevel(),
+        //     getLineFromWest(getPositionHero()));
     }
+
+    $camera;
+
+    $temple;
 
     $createView() {
 
@@ -106,10 +152,8 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
             this.stage.removeActor($actor);
         });
 
-        const temple = this.stage.createActor(ActorTemple)
-        .translateTo(new Vector2(0, 96 + 32));
-
-        this.$actors.push(temple);
+        this.$temple = this.stage.createActor(ActorTemple)
+        this.$actors.push(this.$temple);
 
         let getterLine = getLineFromNorth;
 
@@ -132,12 +176,37 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
 
         getterLine(getPositionHero()).forEach(($actor, $index, $array) => {
 
+            const floor = this.stage.createActor(ActorFloor)
+            .translate(new Vector2(16 + (- ($array.length / 2) + $index) * 32, 0));
+
+            this.$actors.push(floor);
+
             const actor = this.stage.createActor(mapping.get($actor))
             .translate(new Vector2(16 + (- ($array.length / 2) + $index) * 32, 0));
 
             if ($actor === 'Hero') {
 
                 this.stage.setPointOfView(actor);
+
+                // this.stage.setPointOfView(new Actor(this.stage).translateTo(
+
+                //     actor.translation.clone().add(new Vector2(0, -32))
+                // ));
+
+                this.$hero = actor;
+
+                actor.setZIndex(1);
+            }
+
+            if ($actor === 'Exit') {
+
+                actor.addListener(STATES_EXIT.ENTERED, () => {
+
+                    this.$exiting = true;
+
+                    this.$camera = this.stage.createActor(Actor).translateTo(this.$hero.translation.clone());
+                    this.stage.setPointOfView(this.$camera);
+                });
             }
 
             this.$actors.push(actor);
@@ -148,6 +217,8 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
      * @type {Actor['onCreate']}
      */
     onCreate() {
+
+        this.$exiting = false;
 
         /**/
 
@@ -211,10 +282,11 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
 
         this.$createView();
 
-        const getCommandCCW = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.RT) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.RIGHT));
-        const getCommandCW = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LT) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.LEFT));
+        const getCommandCW = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LB) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.LEFT));
+        const getCommandCCW = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.RT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.RB) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.RIGHT));
         const getCommandLeft = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LEFT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LS_LEFT) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.Q));
         const getCommandRight = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.RIGHT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LS_RIGHT) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.D));
+
 
         this.$machine = new FiniteStateMachine([
 
@@ -223,22 +295,64 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
                 $transitions: [
 
                     {
+                        $state: 'EXITING',
+                        $condition: ({$timer}) => ($timer >= 1600 && this.$exiting === true)
+                    },
+                    {
                         $state: 'SWITCHING_CCW',
-                        $condition: ({$timer}) => ($timer >= 200 && getCommandCCW() === true)
+                        $condition: ({$timer}) => (this.$exiting === false && $timer >= 200 && getCommandCCW() === true)
                     },
                     {
                         $state: 'SWITCHING_CW',
-                        $condition: ({$timer}) => ($timer >= 200 && getCommandCW() === true)
+                        $condition: ({$timer}) => (this.$exiting === false && $timer >= 200 && getCommandCW() === true)
                     },
                     {
                         $state: 'WALKING_LEFT',
-                        $condition: ({$timer}) => ($timer >= 200 && checkMoveHeroLeftFromOrientation() === true && getCommandLeft() === true)
+                        $condition: ({$timer}) => (this.$exiting === false && $timer >= 200 && getCommandLeft() === true && checkMoveHeroLeftFromOrientation() === true)
                     },
                     {
                         $state: 'WALKING_RIGHT',
-                        $condition: ({$timer}) => ($timer >= 200 && checkMoveHeroRightFromOrientation() === true && getCommandRight() === true)
+                        $condition: ({$timer}) => (this.$exiting === false && $timer >= 200 && getCommandRight() === true && checkMoveHeroRightFromOrientation() === true)
                     }
                 ]
+            },
+            {
+                $state: 'EXITING',
+                $onEnter: ({$timetick}) => {
+
+                    [...this.$actors].forEach(($actor) => {
+
+                        this.stage.removeActor($actor);
+                    });
+                },
+                $onLeave: async () => {
+
+                    const next = getNextLevel();
+
+                    if (typeof next === 'undefined') {
+
+                        console.log('CREDITS')
+
+                        await this.engine.preloadStage(StageCredits);
+                        this.engine.createStage(StageCredits);
+
+                        return;
+                    }
+
+                    stateLevelCurrent.setState(next);
+
+                    this.engine.createStage(StagePrototype);
+                },
+                $transitions: [
+
+                    {
+                        $state: 'LEAVING',
+                        $condition: ({$timer}) => ($timer >= 1000)
+                    }
+                ]
+            },
+            {
+                $state: 'LEAVING'
             },
             {
                 $state: 'SWITCHING_CCW',
@@ -246,6 +360,11 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
 
                     setOrientationCCW();
                     this.$createView();
+
+                    this.addSound(new Sound({
+
+                        $audio: soundWoosh
+                    }));
                 },
                 $transitions: [
 
@@ -261,6 +380,11 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
 
                     setOrientationCW();
                     this.$createView();
+
+                    this.addSound(new Sound({
+
+                        $audio: soundWoosh
+                    }));
                 },
                 $transitions: [
 
@@ -274,8 +398,20 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
                 $state: 'WALKING_LEFT',
                 $onEnter: () => {
 
+                    // this.$createView();
+
+                    this.addSound(new Sound({
+
+                        $audio: soundRoll
+                    }));
+                },
+                $onTick: ({$timetick}) => {
+
+                    this.$hero.translate(new Vector2(- (32 * $timetick) / 200, 0));
+                },
+                $onLeave: () => {
+
                     moveHeroLeftFromOrientation();
-                    this.$createView();
                 },
                 $transitions: [
 
@@ -289,8 +425,20 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
                 $state: 'WALKING_RIGHT',
                 $onEnter: () => {
 
+                    // this.$createView();
+
+                    this.addSound(new Sound({
+
+                        $audio: soundRoll
+                    }));
+                },
+                $onTick: ({$timetick}) => {
+
+                    this.$hero.translate(new Vector2((32 * $timetick) / 200, 0));
+                },
+                $onLeave: () => {
+
                     moveHeroRightFromOrientation();
-                    this.$createView();
                 },
                 $transitions: [
 
@@ -305,12 +453,47 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
         this.$machine.initiate('IDLE');
     }
 
+    $exit;
+
     /**
      * @type {Actor['onTick']}
      */
     onTick($timetick) {
 
         this.$machine.tick($timetick);
+
+        if (typeof this.$camera !== 'undefined') {
+
+            this.$camera.translate(new Vector2(0, 32 * $timetick / 1000));
+        }
+
+        if (this.$exiting) {
+
+            this.$hero.translate(new Vector2(0, 64 * $timetick / 1000));
+        }
+
+        if (this.$exiting && this.$exit !== true) {
+
+            this.$exit = true;
+
+            this.$hero.actionFly();
+
+            this.addSound(new Sound({
+
+                $audio: soundBreathe
+            }));
+            // this.stage.removeActor(this.$controls);
+        }
+
+        // this.$temple.translateTo(this.$hero.translation.clone());
+        // this.$controls.translateTo(
+
+        //     new Vector2(
+
+        //         Math.floor(this.$hero.translation.clone().x),
+        //         Math.floor(this.$hero.translation.clone().y)
+        //     )
+        // );
     }
 }
 

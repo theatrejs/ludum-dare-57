@@ -1,0 +1,1123 @@
+{ "frames": [
+   {
+    "filename": "#@theatrejs.font.aseprite",
+    "frame": { "x": 55, "y": 16, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": " #@theatrejs.font.aseprite",
+    "frame": { "x": 78, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "A#@theatrejs.font.aseprite",
+    "frame": { "x": 84, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "B#@theatrejs.font.aseprite",
+    "frame": { "x": 90, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "C#@theatrejs.font.aseprite",
+    "frame": { "x": 96, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "D#@theatrejs.font.aseprite",
+    "frame": { "x": 102, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "E#@theatrejs.font.aseprite",
+    "frame": { "x": 108, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "F#@theatrejs.font.aseprite",
+    "frame": { "x": 0, "y": 64, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "G#@theatrejs.font.aseprite",
+    "frame": { "x": 24, "y": 64, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "H#@theatrejs.font.aseprite",
+    "frame": { "x": 30, "y": 64, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "I#@theatrejs.font.aseprite",
+    "frame": { "x": 61, "y": 64, "w": 5, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 5, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "J#@theatrejs.font.aseprite",
+    "frame": { "x": 76, "y": 64, "w": 4, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 4, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "K#@theatrejs.font.aseprite",
+    "frame": { "x": 49, "y": 16, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "L#@theatrejs.font.aseprite",
+    "frame": { "x": 66, "y": 64, "w": 5, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 5, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "M#@theatrejs.font.aseprite",
+    "frame": { "x": 11, "y": 0, "w": 9, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 9, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "N#@theatrejs.font.aseprite",
+    "frame": { "x": 61, "y": 16, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "O#@theatrejs.font.aseprite",
+    "frame": { "x": 67, "y": 16, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "P#@theatrejs.font.aseprite",
+    "frame": { "x": 73, "y": 16, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "Q#@theatrejs.font.aseprite",
+    "frame": { "x": 79, "y": 16, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "R#@theatrejs.font.aseprite",
+    "frame": { "x": 85, "y": 16, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "S#@theatrejs.font.aseprite",
+    "frame": { "x": 91, "y": 16, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "T#@theatrejs.font.aseprite",
+    "frame": { "x": 7, "y": 16, "w": 7, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 7, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "U#@theatrejs.font.aseprite",
+    "frame": { "x": 97, "y": 16, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "V#@theatrejs.font.aseprite",
+    "frame": { "x": 103, "y": 16, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "W#@theatrejs.font.aseprite",
+    "frame": { "x": 20, "y": 0, "w": 9, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 9, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "X#@theatrejs.font.aseprite",
+    "frame": { "x": 109, "y": 16, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "Y#@theatrejs.font.aseprite",
+    "frame": { "x": 97, "y": 0, "w": 7, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 7, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "Z#@theatrejs.font.aseprite",
+    "frame": { "x": 115, "y": 16, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "a#@theatrejs.font.aseprite",
+    "frame": { "x": 121, "y": 16, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "b#@theatrejs.font.aseprite",
+    "frame": { "x": 0, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "c#@theatrejs.font.aseprite",
+    "frame": { "x": 6, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "d#@theatrejs.font.aseprite",
+    "frame": { "x": 12, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "e#@theatrejs.font.aseprite",
+    "frame": { "x": 18, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "f#@theatrejs.font.aseprite",
+    "frame": { "x": 24, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "g#@theatrejs.font.aseprite",
+    "frame": { "x": 30, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "h#@theatrejs.font.aseprite",
+    "frame": { "x": 36, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "i#@theatrejs.font.aseprite",
+    "frame": { "x": 0, "y": 80, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "j#@theatrejs.font.aseprite",
+    "frame": { "x": 119, "y": 64, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "k#@theatrejs.font.aseprite",
+    "frame": { "x": 42, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "l#@theatrejs.font.aseprite",
+    "frame": { "x": 126, "y": 32, "w": 2, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 2, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "m#@theatrejs.font.aseprite",
+    "frame": { "x": 29, "y": 0, "w": 9, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 9, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "n#@theatrejs.font.aseprite",
+    "frame": { "x": 48, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "o#@theatrejs.font.aseprite",
+    "frame": { "x": 120, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "p#@theatrejs.font.aseprite",
+    "frame": { "x": 54, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "q#@theatrejs.font.aseprite",
+    "frame": { "x": 60, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "r#@theatrejs.font.aseprite",
+    "frame": { "x": 66, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "s#@theatrejs.font.aseprite",
+    "frame": { "x": 72, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "t#@theatrejs.font.aseprite",
+    "frame": { "x": 78, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "u#@theatrejs.font.aseprite",
+    "frame": { "x": 84, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "v#@theatrejs.font.aseprite",
+    "frame": { "x": 90, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "w#@theatrejs.font.aseprite",
+    "frame": { "x": 38, "y": 0, "w": 9, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 9, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "x#@theatrejs.font.aseprite",
+    "frame": { "x": 96, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "y#@theatrejs.font.aseprite",
+    "frame": { "x": 102, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "z#@theatrejs.font.aseprite",
+    "frame": { "x": 108, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "0#@theatrejs.font.aseprite",
+    "frame": { "x": 114, "y": 32, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "1#@theatrejs.font.aseprite",
+    "frame": { "x": 46, "y": 64, "w": 5, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 5, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "2#@theatrejs.font.aseprite",
+    "frame": { "x": 0, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "3#@theatrejs.font.aseprite",
+    "frame": { "x": 6, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "4#@theatrejs.font.aseprite",
+    "frame": { "x": 12, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "5#@theatrejs.font.aseprite",
+    "frame": { "x": 18, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "6#@theatrejs.font.aseprite",
+    "frame": { "x": 24, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "7#@theatrejs.font.aseprite",
+    "frame": { "x": 30, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "8#@theatrejs.font.aseprite",
+    "frame": { "x": 36, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "9#@theatrejs.font.aseprite",
+    "frame": { "x": 42, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "$#@theatrejs.font.aseprite",
+    "frame": { "x": 0, "y": 16, "w": 7, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 7, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "¢#@theatrejs.font.aseprite",
+    "frame": { "x": 48, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "€#@theatrejs.font.aseprite",
+    "frame": { "x": 104, "y": 0, "w": 7, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 7, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "£#@theatrejs.font.aseprite",
+    "frame": { "x": 54, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "¥#@theatrejs.font.aseprite",
+    "frame": { "x": 111, "y": 0, "w": 7, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 7, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "¤#@theatrejs.font.aseprite",
+    "frame": { "x": 60, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "+#@theatrejs.font.aseprite",
+    "frame": { "x": 21, "y": 16, "w": 7, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 7, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "-#@theatrejs.font.aseprite",
+    "frame": { "x": 118, "y": 0, "w": 7, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 7, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "*#@theatrejs.font.aseprite",
+    "frame": { "x": 71, "y": 64, "w": 5, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 5, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "/#@theatrejs.font.aseprite",
+    "frame": { "x": 66, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "÷#@theatrejs.font.aseprite",
+    "frame": { "x": 14, "y": 16, "w": 7, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 7, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "=#@theatrejs.font.aseprite",
+    "frame": { "x": 72, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "%#@theatrejs.font.aseprite",
+    "frame": { "x": 65, "y": 0, "w": 8, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 8, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "‰#@theatrejs.font.aseprite",
+    "frame": { "x": 0, "y": 0, "w": 11, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 11, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "\"#@theatrejs.font.aseprite",
+    "frame": { "x": 122, "y": 64, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "'#@theatrejs.font.aseprite",
+    "frame": { "x": 125, "y": 64, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "##@theatrejs.font.aseprite",
+    "frame": { "x": 73, "y": 0, "w": 8, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 8, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "@#@theatrejs.font.aseprite",
+    "frame": { "x": 47, "y": 0, "w": 9, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 9, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "&#@theatrejs.font.aseprite",
+    "frame": { "x": 28, "y": 16, "w": 7, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 7, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "_#@theatrejs.font.aseprite",
+    "frame": { "x": 35, "y": 16, "w": 7, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 7, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "(#@theatrejs.font.aseprite",
+    "frame": { "x": 3, "y": 80, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": ")#@theatrejs.font.aseprite",
+    "frame": { "x": 125, "y": 0, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": ",#@theatrejs.font.aseprite",
+    "frame": { "x": 92, "y": 64, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": ".#@theatrejs.font.aseprite",
+    "frame": { "x": 95, "y": 64, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": ";#@theatrejs.font.aseprite",
+    "frame": { "x": 98, "y": 64, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": ":#@theatrejs.font.aseprite",
+    "frame": { "x": 101, "y": 64, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "¿#@theatrejs.font.aseprite",
+    "frame": { "x": 36, "y": 64, "w": 5, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 5, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "?#@theatrejs.font.aseprite",
+    "frame": { "x": 41, "y": 64, "w": 5, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 5, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "¡#@theatrejs.font.aseprite",
+    "frame": { "x": 104, "y": 64, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "!#@theatrejs.font.aseprite",
+    "frame": { "x": 107, "y": 64, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "\\#@theatrejs.font.aseprite",
+    "frame": { "x": 114, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "|#@theatrejs.font.aseprite",
+    "frame": { "x": 110, "y": 64, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "{#@theatrejs.font.aseprite",
+    "frame": { "x": 51, "y": 64, "w": 5, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 5, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "}#@theatrejs.font.aseprite",
+    "frame": { "x": 56, "y": 64, "w": 5, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 5, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "<#@theatrejs.font.aseprite",
+    "frame": { "x": 80, "y": 64, "w": 4, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 4, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": ">#@theatrejs.font.aseprite",
+    "frame": { "x": 84, "y": 64, "w": 4, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 4, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "[#@theatrejs.font.aseprite",
+    "frame": { "x": 113, "y": 64, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "]#@theatrejs.font.aseprite",
+    "frame": { "x": 116, "y": 64, "w": 3, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 3, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "§#@theatrejs.font.aseprite",
+    "frame": { "x": 120, "y": 48, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "¶#@theatrejs.font.aseprite",
+    "frame": { "x": 42, "y": 16, "w": 7, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 7, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "µ#@theatrejs.font.aseprite",
+    "frame": { "x": 6, "y": 64, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "`#@theatrejs.font.aseprite",
+    "frame": { "x": 88, "y": 64, "w": 4, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 4, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "^#@theatrejs.font.aseprite",
+    "frame": { "x": 12, "y": 64, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "~#@theatrejs.font.aseprite",
+    "frame": { "x": 18, "y": 64, "w": 6, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 6, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "©#@theatrejs.font.aseprite",
+    "frame": { "x": 81, "y": 0, "w": 8, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 8, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "®#@theatrejs.font.aseprite",
+    "frame": { "x": 89, "y": 0, "w": 8, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 8, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   },
+   {
+    "filename": "™#@theatrejs.font.aseprite",
+    "frame": { "x": 56, "y": 0, "w": 9, "h": 16 },
+    "rotated": false,
+    "trimmed": true,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 9, "h": 16 },
+    "sourceSize": { "w": 16, "h": 16 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.9-x64",
+  "image": "theatrejs.font.png",
+  "format": "RGBA8888",
+  "size": { "w": 128, "h": 128 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "", "from": 0, "to": 0, "direction": "forward" },
+   { "name": " ", "from": 1, "to": 1, "direction": "forward" },
+   { "name": "A", "from": 2, "to": 2, "direction": "forward" },
+   { "name": "B", "from": 3, "to": 3, "direction": "forward" },
+   { "name": "C", "from": 4, "to": 4, "direction": "forward" },
+   { "name": "D", "from": 5, "to": 5, "direction": "forward" },
+   { "name": "E", "from": 6, "to": 6, "direction": "forward" },
+   { "name": "F", "from": 7, "to": 7, "direction": "forward" },
+   { "name": "G", "from": 8, "to": 8, "direction": "forward" },
+   { "name": "H", "from": 9, "to": 9, "direction": "forward" },
+   { "name": "I", "from": 10, "to": 10, "direction": "forward" },
+   { "name": "J", "from": 11, "to": 11, "direction": "forward" },
+   { "name": "K", "from": 12, "to": 12, "direction": "forward" },
+   { "name": "L", "from": 13, "to": 13, "direction": "forward" },
+   { "name": "M", "from": 14, "to": 14, "direction": "forward" },
+   { "name": "N", "from": 15, "to": 15, "direction": "forward" },
+   { "name": "O", "from": 16, "to": 16, "direction": "forward" },
+   { "name": "P", "from": 17, "to": 17, "direction": "forward" },
+   { "name": "Q", "from": 18, "to": 18, "direction": "forward" },
+   { "name": "R", "from": 19, "to": 19, "direction": "forward" },
+   { "name": "S", "from": 20, "to": 20, "direction": "forward" },
+   { "name": "T", "from": 21, "to": 21, "direction": "forward" },
+   { "name": "U", "from": 22, "to": 22, "direction": "forward" },
+   { "name": "V", "from": 23, "to": 23, "direction": "forward" },
+   { "name": "W", "from": 24, "to": 24, "direction": "forward" },
+   { "name": "X", "from": 25, "to": 25, "direction": "forward" },
+   { "name": "Y", "from": 26, "to": 26, "direction": "forward" },
+   { "name": "Z", "from": 27, "to": 27, "direction": "forward" },
+   { "name": "a", "from": 28, "to": 28, "direction": "forward" },
+   { "name": "b", "from": 29, "to": 29, "direction": "forward" },
+   { "name": "c", "from": 30, "to": 30, "direction": "forward" },
+   { "name": "d", "from": 31, "to": 31, "direction": "forward" },
+   { "name": "e", "from": 32, "to": 32, "direction": "forward" },
+   { "name": "f", "from": 33, "to": 33, "direction": "forward" },
+   { "name": "g", "from": 34, "to": 34, "direction": "forward" },
+   { "name": "h", "from": 35, "to": 35, "direction": "forward" },
+   { "name": "i", "from": 36, "to": 36, "direction": "forward" },
+   { "name": "j", "from": 37, "to": 37, "direction": "forward" },
+   { "name": "k", "from": 38, "to": 38, "direction": "forward" },
+   { "name": "l", "from": 39, "to": 39, "direction": "forward" },
+   { "name": "m", "from": 40, "to": 40, "direction": "forward" },
+   { "name": "n", "from": 41, "to": 41, "direction": "forward" },
+   { "name": "o", "from": 42, "to": 42, "direction": "forward" },
+   { "name": "p", "from": 43, "to": 43, "direction": "forward" },
+   { "name": "q", "from": 44, "to": 44, "direction": "forward" },
+   { "name": "r", "from": 45, "to": 45, "direction": "forward" },
+   { "name": "s", "from": 46, "to": 46, "direction": "forward" },
+   { "name": "t", "from": 47, "to": 47, "direction": "forward" },
+   { "name": "u", "from": 48, "to": 48, "direction": "forward" },
+   { "name": "v", "from": 49, "to": 49, "direction": "forward" },
+   { "name": "w", "from": 50, "to": 50, "direction": "forward" },
+   { "name": "x", "from": 51, "to": 51, "direction": "forward" },
+   { "name": "y", "from": 52, "to": 52, "direction": "forward" },
+   { "name": "z", "from": 53, "to": 53, "direction": "forward" },
+   { "name": "0", "from": 54, "to": 54, "direction": "forward" },
+   { "name": "1", "from": 55, "to": 55, "direction": "forward" },
+   { "name": "2", "from": 56, "to": 56, "direction": "forward" },
+   { "name": "3", "from": 57, "to": 57, "direction": "forward" },
+   { "name": "4", "from": 58, "to": 58, "direction": "forward" },
+   { "name": "5", "from": 59, "to": 59, "direction": "forward" },
+   { "name": "6", "from": 60, "to": 60, "direction": "forward" },
+   { "name": "7", "from": 61, "to": 61, "direction": "forward" },
+   { "name": "8", "from": 62, "to": 62, "direction": "forward" },
+   { "name": "9", "from": 63, "to": 63, "direction": "forward" },
+   { "name": "$", "from": 64, "to": 64, "direction": "forward" },
+   { "name": "¢", "from": 65, "to": 65, "direction": "forward" },
+   { "name": "€", "from": 66, "to": 66, "direction": "forward" },
+   { "name": "£", "from": 67, "to": 67, "direction": "forward" },
+   { "name": "¥", "from": 68, "to": 68, "direction": "forward" },
+   { "name": "¤", "from": 69, "to": 69, "direction": "forward" },
+   { "name": "+", "from": 70, "to": 70, "direction": "forward" },
+   { "name": "-", "from": 71, "to": 71, "direction": "forward" },
+   { "name": "*", "from": 72, "to": 72, "direction": "forward" },
+   { "name": "/", "from": 73, "to": 73, "direction": "forward" },
+   { "name": "÷", "from": 74, "to": 74, "direction": "forward" },
+   { "name": "=", "from": 75, "to": 75, "direction": "forward" },
+   { "name": "%", "from": 76, "to": 76, "direction": "forward" },
+   { "name": "‰", "from": 77, "to": 77, "direction": "forward" },
+   { "name": "\"", "from": 78, "to": 78, "direction": "forward" },
+   { "name": "'", "from": 79, "to": 79, "direction": "forward" },
+   { "name": "#", "from": 80, "to": 80, "direction": "forward" },
+   { "name": "@", "from": 81, "to": 81, "direction": "forward" },
+   { "name": "&", "from": 82, "to": 82, "direction": "forward" },
+   { "name": "_", "from": 83, "to": 83, "direction": "forward" },
+   { "name": "(", "from": 84, "to": 84, "direction": "forward" },
+   { "name": ")", "from": 85, "to": 85, "direction": "forward" },
+   { "name": ",", "from": 86, "to": 86, "direction": "forward" },
+   { "name": ".", "from": 87, "to": 87, "direction": "forward" },
+   { "name": ";", "from": 88, "to": 88, "direction": "forward" },
+   { "name": ":", "from": 89, "to": 89, "direction": "forward" },
+   { "name": "¿", "from": 90, "to": 90, "direction": "forward" },
+   { "name": "?", "from": 91, "to": 91, "direction": "forward" },
+   { "name": "¡", "from": 92, "to": 92, "direction": "forward" },
+   { "name": "!", "from": 93, "to": 93, "direction": "forward" },
+   { "name": "\\", "from": 94, "to": 94, "direction": "forward" },
+   { "name": "|", "from": 95, "to": 95, "direction": "forward" },
+   { "name": "{", "from": 96, "to": 96, "direction": "forward" },
+   { "name": "}", "from": 97, "to": 97, "direction": "forward" },
+   { "name": "<", "from": 98, "to": 98, "direction": "forward" },
+   { "name": ">", "from": 99, "to": 99, "direction": "forward" },
+   { "name": "[", "from": 100, "to": 100, "direction": "forward" },
+   { "name": "]", "from": 101, "to": 101, "direction": "forward" },
+   { "name": "§", "from": 102, "to": 102, "direction": "forward" },
+   { "name": "¶", "from": 103, "to": 103, "direction": "forward" },
+   { "name": "µ", "from": 104, "to": 104, "direction": "forward" },
+   { "name": "`", "from": 105, "to": 105, "direction": "forward" },
+   { "name": "^", "from": 106, "to": 106, "direction": "forward" },
+   { "name": "~", "from": 107, "to": 107, "direction": "forward" },
+   { "name": "©", "from": 108, "to": 108, "direction": "forward" },
+   { "name": "®", "from": 109, "to": 109, "direction": "forward" },
+   { "name": "™", "from": 110, "to": 110, "direction": "forward" }
+  ]
+ }
+}

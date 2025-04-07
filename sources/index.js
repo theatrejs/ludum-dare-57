@@ -9,5 +9,5 @@ ExtensionPointer.activate();
 const engine = new Engine();
 engine.initiate(25);
 
-await engine.preloadStage(StagePrototype);
-engine.createStage(StagePrototype);
+await engine.preloadStage(StageSplashScreen);
+engine.createStage(StageSplashScreen);

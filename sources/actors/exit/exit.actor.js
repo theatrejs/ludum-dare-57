@@ -4,7 +4,11 @@ import * as PLUGIN_ASEPRITE from '@theatrejs/plugin-aseprite';
 import * as ACTIONS from './exit.actions.js';
 import * as STATES from './exit.states.js';
 import asepriteExit from './spritesheets/exit.aseprite';
-import soundActivate from './sounds/activate.rpp';
+import soundActivate from './sounds/portal.rpp';
+
+import StagePrototype from 'stages/prototype/prototype.stage.js';
+import StageCredits from 'stages/credits/credits.stage.js';
+import { getNextLevel, stateLevelCurrent } from 'states/levels.state.js';
 
 /**
  * @extends {Actor<(ACTIONS.ACTIVATE | ACTIONS.DEACTIVATE | ACTIONS.START), (STATES.ACTIVATED | STATES.DEACTIVATED | STATES.ENTERED | STATES.LEFT | STATES.STARTED)>}
@@ -94,12 +98,20 @@ class ActorExit extends FACTORIES.ActorWithPreloadables([
 
             $boundaries: new AABB(
 
-                new Vector2(-8, -8),
-                new Vector2(8, 8)
+                new Vector2(-0.5, -0.5),
+                new Vector2(0.5, 0.5)
             ),
             $traversable: true,
             $type: COLLIDERTYPES.STATIC
         }));
+
+        this.addSound(new Sound({
+
+            $audio: soundActivate,
+            $loop: true
+        }));
+
+        this.setZIndex(1);
     }
 
     /**

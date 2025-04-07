@@ -76,7 +76,7 @@ function getPositionHero() {
 
     for (let $row = 0, $height = level.length; $row < $height; $row += 1) {
 
-        for (let $column = 0, $width = level.length; $column < $width; $column += 1) {
+        for (let $column = 0, $width = level[0].length; $column < $width; $column += 1) {
 
             if (level[$row][$column] === 'Hero') {
 
@@ -84,6 +84,30 @@ function getPositionHero() {
             }
         }
     }
+}
+
+/**
+ * Checks if the 'Hero' actor can move to the position.
+ * @param {Vector2} $position The position to check.
+ * @returns {boolean}
+ */
+function checkMovable($position) {
+
+    const cell = stateLevel.getState()[$position.x][$position.y];
+
+    console.log(cell)
+
+    if (cell === 'Hole') {
+
+        return false;
+    }
+
+    if (cell === 'Wall') {
+
+        return false;
+    }
+
+    return true;
 }
 
 /**
@@ -163,14 +187,7 @@ function checkMoveHeroNorth() {
         return false;
     }
 
-    const level = stateLevel.getState();
-
-    if (typeof level[position.y - 1][position.x] !== 'undefined') {
-
-        return false;
-    }
-
-    return true;
+    return checkMovable(new Vector2(position.y - 1, position.x)) === true;
 }
 
 /**
@@ -188,12 +205,7 @@ function checkMoveHeroEast() {
         return false;
     }
 
-    if (typeof level[position.y][position.x + 1] !== 'undefined') {
-
-        return false;
-    }
-
-    return true;
+    return checkMovable(new Vector2(position.y, position.x + 1)) === true;
 }
 
 /**
@@ -211,12 +223,7 @@ function checkMoveHeroSouth() {
         return false;
     }
 
-    if (typeof level[position.y + 1][position.x] !== 'undefined') {
-
-        return false;
-    }
-
-    return true;
+    return checkMovable(new Vector2(position.y + 1, position.x)) === true;
 }
 
 /**
@@ -232,14 +239,7 @@ function checkMoveHeroWest() {
         return false;
     }
 
-    const level = stateLevel.getState();
-
-    if (typeof level[position.y][position.x - 1] !== 'undefined') {
-
-        return false;
-    }
-
-    return true;
+    return checkMovable(new Vector2(position.y, position.x - 1)) === true;
 }
 
 /**
@@ -313,6 +313,14 @@ function moveHeroNorth() {
 
     const level = stateLevel.getState();
 
+
+    if (level[position.y - 1][position.x] === 'Exit') {
+
+        stateLevel.setState(level);
+
+        return;
+    }
+
     level[position.y][position.x] = undefined;
     level[position.y - 1][position.x] = 'Hero';
 
@@ -327,6 +335,14 @@ function moveHeroEast() {
     const position = getPositionHero();
 
     const level = stateLevel.getState();
+
+
+    if (level[position.y][position.x + 1] === 'Exit') {
+
+        stateLevel.setState(level);
+
+        return;
+    }
 
     level[position.y][position.x] = undefined;
     level[position.y][position.x + 1] = 'Hero';
@@ -343,6 +359,14 @@ function moveHeroSouth() {
 
     const level = stateLevel.getState();
 
+
+    if (level[position.y + 1][position.x] === 'Exit') {
+
+        stateLevel.setState(level);
+
+        return;
+    }
+
     level[position.y][position.x] = undefined;
     level[position.y + 1][position.x] = 'Hero';
 
@@ -357,6 +381,14 @@ function moveHeroWest() {
     const position = getPositionHero();
 
     const level = stateLevel.getState();
+
+
+    if (level[position.y][position.x - 1] === 'Exit') {
+
+        stateLevel.setState(level);
+
+        return;
+    }
 
     level[position.y][position.x] = undefined;
     level[position.y][position.x - 1] = 'Hero';
@@ -374,6 +406,7 @@ export {
     getLineFromSouth,
     getLineFromWest,
     getPositionHero,
+    checkMovable,
     checkMoveHeroLeftFromOrientation,
     checkMoveHeroRightFromOrientation,
     moveHeroLeftFromOrientation,
