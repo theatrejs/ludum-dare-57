@@ -1,14 +1,13 @@
 import {Actor, EVENTCODES, FACTORIES, FiniteStateMachine, Vector2} from '@theatrejs/theatrejs';
 
-import {getStateStage} from 'states/stage.state.js';
-import {getStateZIndexInterface} from 'states/z-indexes.state.js';
+import {getStage} from 'states/stage.state.js';
+import {getZIndexInterface} from 'states/z-indexes.state.js';
 
 import StageSplashScreen from 'stages/splash-screen/splash-screen.stage.js';
 
 import ActorCredits from './actors/credits/credits.actor.js';
-
 import ActorLudumDare from './actors/ludum-dare/ludum-dare.actor.js';
-import * as ACTIONS_PRESS_ANY_KEY from './actors/ludum-dare/ludum-dare.actions.js';
+import * as ACTIONS_LUDUM_DARE from './actors/ludum-dare/ludum-dare.actions.js';
 
 class ControllerCredits extends FACTORIES.ActorWithPreloadables([
 
@@ -64,7 +63,7 @@ class ControllerCredits extends FACTORIES.ActorWithPreloadables([
 
         this.$preloaded = false;
 
-        this.engine.preloadStage(getStateStage()).then(() => {
+        this.engine.preloadStage(getStage()).then(() => {
 
             this.$preloaded = true;
         });
@@ -87,7 +86,7 @@ class ControllerCredits extends FACTORIES.ActorWithPreloadables([
 
                     this.$actorCredits = this.stage.createActor(ActorCredits)
                     .translateTo(new Vector2(0, 64))
-                    .setZIndex(getStateZIndexInterface());
+                    .setZIndex(getZIndexInterface());
                 },
                 $transitions: [
 
@@ -103,7 +102,7 @@ class ControllerCredits extends FACTORIES.ActorWithPreloadables([
 
                     this.$actorLudumDare = this.stage.createActor(ActorLudumDare)
                     .translateTo(new Vector2(0, -96))
-                    .setZIndex(getStateZIndexInterface());
+                    .setZIndex(getZIndexInterface());
                 },
                 $transitions: [
 
@@ -123,7 +122,7 @@ class ControllerCredits extends FACTORIES.ActorWithPreloadables([
                 $state: 'SELECTED',
                 $onEnter: () => {
 
-                    this.$actorLudumDare.trigger(ACTIONS_PRESS_ANY_KEY.SELECT);
+                    this.$actorLudumDare.trigger(ACTIONS_LUDUM_DARE.SELECT);
                 },
                 $transitions: [
 
@@ -142,7 +141,7 @@ class ControllerCredits extends FACTORIES.ActorWithPreloadables([
 
                     this.engine.createStage(StageSplashScreen);
 
-                    window.open('https://ldjam.com/events/ludum-dare/57/$406925');
+                    window.open('https://ldjam.com/events/ludum-dare/57/souls-rider-1d');
                 }
             }
         ]);

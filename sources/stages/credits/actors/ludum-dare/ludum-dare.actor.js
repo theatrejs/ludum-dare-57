@@ -2,9 +2,9 @@ import {Actor, FACTORIES, Sound} from '@theatrejs/theatrejs';
 import * as PLUGIN_ASEPRITE from '@theatrejs/plugin-aseprite';
 
 import * as ACTIONS from './ludum-dare.actions.js';
-import asepriteLudumDare from './spritesheets/ludum-dare.aseprite';
-import fontTheatre from './fonts/theatrejs.font.aseprite';
-import soundActivate from './sounds/activate.rpp';
+import asepriteLudumDare from './spritesheets/ludum-dare/ludum-dare.aseprite';
+import fontTheatre from './fonts/theatrejs/theatrejs.font.aseprite';
+import soundSelect from './sounds/select/select.rpp';
 
 /**
  * @extends {Actor<(ACTIONS.IDLE | ACTIONS.SELECT), undefined>}
@@ -13,7 +13,7 @@ class ActorLudumDare extends FACTORIES.ActorWithPreloadables([
 
     PLUGIN_ASEPRITE.FACTORIES.PreloadableAseprite(asepriteLudumDare),
     PLUGIN_ASEPRITE.FACTORIES.PreloadableAseprite(fontTheatre),
-    FACTORIES.PreloadableSound(soundActivate)
+    FACTORIES.PreloadableSound(soundSelect)
 ]) {
 
     /**
@@ -53,7 +53,7 @@ class ActorLudumDare extends FACTORIES.ActorWithPreloadables([
 
         this.addSound(new Sound({
 
-            $audio: soundActivate
+            $audio: soundSelect
         }));
     }
 

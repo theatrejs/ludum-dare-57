@@ -1,7 +1,7 @@
 import {Actor, FACTORIES} from '@theatrejs/theatrejs';
 import * as PLUGIN_ASEPRITE from '@theatrejs/plugin-aseprite';
 
-import asepriteTitle from './spritesheets/title.aseprite';
+import asepriteTitle from './spritesheets/title/title.aseprite';
 
 class ActorTitle extends FACTORIES.ActorWithPreloadables([
 

@@ -1,72 +1,91 @@
 import {Actor, EVENTCODES, FACTORIES, FiniteStateMachine, Sound, Vector2} from '@theatrejs/theatrejs';
 
-import ActorExit from 'actors/exit/exit.actor.js';
-import * as STATES_EXIT from 'actors/exit/exit.states.js';
+import {checkMoveHeroLeftFromOrientation, checkMoveHeroRightFromOrientation, getLevelLine, getPositionHero, moveHeroLeftFromOrientation, moveHeroRightFromOrientation, stateLevel} from 'states/level.state.js';
+import {getFirstLevel, getNextLevel, stateLevelCurrent} from 'states/levels.state.js';
+import {getOrientation, setOrientationCounterClockwise, setOrientationClockwise, stateOrientation} from 'states/orientation.state.js';
+import {getZIndexBackground, getZIndexFar, getZIndexNear, getZIndexOrigin} from 'states/z-indexes.state.js';
 
-import ActorFloor from 'actors/floor/floor.actor.js';
+import StageCredits from 'stages/credits/credits.stage.js';
+import StagePrototype from 'stages/prototype/prototype.stage.js';
 
-import ActorHero from 'actors/hero/hero.actor.js';
+import ActorBackground from './actors/background/background.actor.js';
+import * as ACTIONS_BACKGROUND from './actors/background/background.actions.js';
+import ActorExit from './actors/exit/exit.actor.js';
+import * as STATES_EXIT from './actors/exit/exit.states.js';
+import ActorFloor from './actors/floor/floor.actor.js';
+import * as ACTIONS_FLOOR from './actors/floor/floor.actions.js';
+import ActorHero from './actors/hero/hero.actor.js';
+import * as ACTIONS_HERO from './actors/hero/hero.actions.js';
+import ActorHole from './actors/hole/hole.actor.js';
+import ActorWall from './actors/wall/wall.actor.js';
+import * as ACTIONS_WALL from './actors/wall/wall.actions.js';
 
-import ActorHole from 'actors/hole/hole.actor.js';
-
-import ActorLogicGateAnd from 'actors/logic-gate-and/logic-gate-and.actor.js';
-
-import ActorTimer1000 from 'actors/timer-1000/timer-1000.actor.js';
-
-import ActorWall from 'actors/wall/wall.actor.js';
-
-import ActorTemple from 'actors/temple/temple.actor.js';
+import soundWoosh from './sounds/woosh/woosh.rpp';
+import soundAmbiant from './sounds/ambiant/ambiant.rpp';
 
 import stages from 'stages/stages.ldtk';
 
-import {stateLevel, getLevel, getLineFromNorth, getLineFromSouth, getLineFromWest, getPositionHero, getLineFromEast, checkMoveHeroLeftFromOrientation, checkMoveHeroRightFromOrientation, moveHeroLeftFromOrientation, moveHeroRightFromOrientation} from 'states/level.state.js';
-import {setOrientationCCW, setOrientationCW, stateOrientation} from 'states/orientation.state.js';
-import { getNextLevel, stateLevelCurrent } from 'states/levels.state.js';
-import StageCredits from 'stages/credits/credits.stage.js';
-import StagePrototype from './prototype.stage.js';
+/**
+ * The cooldown duration.
+ * @type {number}
+ * @constant
+ * @private
+ */
+const $DURATION_COOLDOWN = 200;
 
-import ActorControls from './actors/controls/controls.actor.js';
+/**
+ * The step duration.
+ * @type {number}
+ * @constant
+ * @private
+ */
+const $DURATION_STEP = 200;
 
-import soundTeleport from '../../actors/hero/sounds/teleport.rpp';
-import soundBreathe from '../../actors/hero/sounds/breathe.rpp';
-import soundRoll from '../../actors/hero/sounds/roll.rpp';
-import soundWoosh from '../../actors/hero/sounds/woosh.rpp';
-import soundAmbiant from '../../actors/hero/sounds/ambiant.rpp';
+/**
+ * The size of a grid cell.
+ * @type {number}
+ * @constant
+ * @private
+ */
+const $SIZE_CELL = 32;
 
 class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
 
-    ActorControls,
+    ActorBackground,
     ActorExit,
     ActorFloor,
     ActorHero,
     ActorHole,
-    ActorLogicGateAnd,
-    ActorTimer1000,
     ActorWall,
 
-    ActorTemple,
-    FACTORIES.PreloadableSound(soundTeleport),
-    FACTORIES.PreloadableSound(soundBreathe),
-    FACTORIES.PreloadableSound(soundRoll),
     FACTORIES.PreloadableSound(soundWoosh),
-    FACTORIES.PreloadableSound(soundAmbiant),
+    FACTORIES.PreloadableSound(soundAmbiant)
 ]) {
 
     /**
-     * @typedef {('EXITING' | 'IDLE' | 'LEAVING' | 'SWITCHING_CCW' | 'SWITCHING_CW' | 'WALKING_LEFT' | 'WALKING_RIGHT')} TypeStateMachine A finite state machine state.
+     * @typedef {('CLEANING' | 'EXITING' | 'IDLE' | 'LEFT' | 'ROLLING_LEFT' | 'ROLLING_RIGHT' | 'ROTATING_CLOCKWISE' | 'ROTATING_COUNTER_CLOCKWISE')} TypeStateMachine A finite state machine state.
      */
 
-    $actors = [];
-
     /**
+     * Stores the camera actor.
      * @type {Actor}
+     * @private
      */
-    $hero;
+    $camera;
 
     /**
+     * Stores the exiting status.
      * @type {boolean}
+     * @private
      */
     $exiting;
+
+    /**
+     * Stores the hero actor.
+     * @type {ActorHero}
+     * @private
+     */
+    $hero;
 
     /**
      * Stores the finite state machine.
@@ -75,8 +94,198 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
      */
     $machine;
 
-    $controls;
+    /**
+     * Stores the removable actors from the current level view.
+     * @type {Array<Actor>}
+     * @private
+     */
+    $removables;
 
+    /**
+     * Creates a 'background' actor.
+     * @returns {ActorBackground}
+     * @private
+     */
+    $createActorBackground() {
+
+        const background = /** @type {ActorBackground} */(this.stage.createActor(ActorBackground));
+
+        background.setZIndex(getZIndexBackground());
+
+        if (getOrientation() === 'EAST') {
+
+            background.trigger(ACTIONS_BACKGROUND.ROTATE_EAST);
+        }
+
+        if (getOrientation() === 'NORTH') {
+
+            background.trigger(ACTIONS_BACKGROUND.ROTATE_NORTH);
+        }
+
+        if (getOrientation() === 'SOUTH') {
+
+            background.trigger(ACTIONS_BACKGROUND.ROTATE_SOUTH);
+        }
+
+        if (getOrientation() === 'WEST') {
+
+            background.trigger(ACTIONS_BACKGROUND.ROTATE_WEST);
+        }
+
+        return background;
+    }
+
+    /**
+     * Creates a 'exit' actor.
+     * @param {Vector2} $position The position of the 'exit' actor to create.
+     * @returns {ActorExit}
+     * @private
+     */
+    $createActorExit($position) {
+
+        const exit = /** @type {ActorExit} */(this.stage.createActor(ActorExit));
+
+        exit
+        .translate($position)
+        .setZIndex(getZIndexNear());
+
+        return exit;
+    }
+
+    /**
+     * Creates a 'floor' actor.
+     * @param {Vector2} $position The position of the 'floor' actor to create.
+     * @returns {ActorFloor}
+     * @private
+     */
+    $createActorFloor($position) {
+
+        const floor = /** @type {ActorFloor} */(this.stage.createActor(ActorFloor));
+
+        floor
+        .translate($position)
+        .setZIndex(getZIndexFar());
+
+        if (getOrientation() === 'EAST') {
+
+            floor.trigger(ACTIONS_FLOOR.ROTATE_EAST);
+        }
+
+        if (getOrientation() === 'NORTH') {
+
+            floor.trigger(ACTIONS_FLOOR.ROTATE_NORTH);
+        }
+
+        if (getOrientation() === 'SOUTH') {
+
+            floor.trigger(ACTIONS_FLOOR.ROTATE_SOUTH);
+        }
+
+        if (getOrientation() === 'WEST') {
+
+            floor.trigger(ACTIONS_FLOOR.ROTATE_WEST);
+        }
+
+        return floor;
+    }
+
+    /**
+     * Creates a 'hero' actor.
+     * @param {Vector2} $position The position of the 'hero' actor to create.
+     * @returns {ActorHero}
+     * @private
+     */
+    $createActorHero($position) {
+
+        const hero = /** @type {ActorHero} */(this.stage.createActor(ActorHero));
+
+        hero
+        .translate($position)
+        .setZIndex(getZIndexOrigin());
+
+        if (getOrientation() === 'EAST') {
+
+            hero.trigger(ACTIONS_HERO.ROTATE_EAST);
+        }
+
+        if (getOrientation() === 'NORTH') {
+
+            hero.trigger(ACTIONS_HERO.ROTATE_NORTH);
+        }
+
+        if (getOrientation() === 'SOUTH') {
+
+            hero.trigger(ACTIONS_HERO.ROTATE_SOUTH);
+        }
+
+        if (getOrientation() === 'WEST') {
+
+            hero.trigger(ACTIONS_HERO.ROTATE_WEST);
+        }
+
+        return hero;
+    }
+
+    /**
+     * Creates a 'hole' actor.
+     * @param {Vector2} $position The position of the 'hole' actor to create.
+     * @returns {ActorHole}
+     * @private
+     */
+    $createActorHole($position) {
+
+        const hole = /** @type {ActorHole} */(this.stage.createActor(ActorHole));
+
+        hole
+        .translate($position)
+        .setZIndex(getZIndexNear());
+
+        this.$removables.push(hole);
+
+        return hole;
+    }
+
+    /**
+     * Creates a 'wall' actor.
+     * @param {Vector2} $position The position of the 'wall' actor to create.
+     * @returns {ActorWall}
+     * @private
+     */
+    $createActorWall($position) {
+
+        const wall = /** @type {ActorWall} */(this.stage.createActor(ActorWall));
+
+        wall
+        .translate($position)
+        .setZIndex(getZIndexNear());
+
+        if (getOrientation() === 'EAST') {
+
+            wall.trigger(ACTIONS_WALL.ROTATE_EAST);
+        }
+
+        if (getOrientation() === 'NORTH') {
+
+            wall.trigger(ACTIONS_WALL.ROTATE_NORTH);
+        }
+
+        if (getOrientation() === 'SOUTH') {
+
+            wall.trigger(ACTIONS_WALL.ROTATE_SOUTH);
+        }
+
+        if (getOrientation() === 'WEST') {
+
+            wall.trigger(ACTIONS_WALL.ROTATE_WEST);
+        }
+
+        return wall;
+    }
+
+    /**
+     * Creates the level.
+     * @private
+     */
     $createLevel() {
 
         this.addSound(new Sound({
@@ -84,9 +293,6 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
             $audio: soundAmbiant,
             $loop: true
         }));
-
-        // this.$controls = this.stage.createActor(ActorControls)
-        // .setZIndex(1000)
 
         const grid = stages.getGrid({
 
@@ -100,9 +306,9 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
             $layer: 'actors'
         });
 
-        // console.log(grid);
-        // console.log(gridData);
-
+        /**
+         * @type {Array<Array<(string | undefined)>>}
+         */
         const level = [];
 
         for (let $row = 0, $height = grid.$height; $row < $height; $row += 1) {
@@ -117,100 +323,86 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
 
         gridData.entityInstances.forEach(($entity) => {
 
-            // console.log($entity, $entity.__grid, level[$entity.__grid[1]]);
-
             level[$entity.__grid[1]][$entity.__grid[0]] = $entity.__identifier;
         });
 
         stateLevel.setState(level);
-
-        // console.log(
-        //     // getLevel(),
-        //     getLineFromWest(getPositionHero()));
     }
 
-    $camera;
+    /**
+     * Creates the level view.
+     * @private
+     */
+    $createLevelView() {
 
-    $temple;
-
-    $createView() {
-
-        /**
-         * @type {Map<string, typeof Actor<string, string>>}
-         */
-        const mapping = /** @type {Map<string, typeof Actor<string, string>>} */(new Map());
-
-        mapping.set('Exit', ActorExit);
-        mapping.set('Hero', ActorHero);
-        mapping.set('Hole', ActorHole);
-        mapping.set('LogicGateAnd', ActorLogicGateAnd);
-        mapping.set('Timer1000', ActorTimer1000);
-        mapping.set('Wall', ActorWall);
-
-        [...this.$actors].forEach(($actor) => {
+        [...this.$removables].forEach(($actor) => {
 
             this.stage.removeActor($actor);
         });
 
-        this.$temple = this.stage.createActor(ActorTemple)
-        this.$actors.push(this.$temple);
+        const background = this.$createActorBackground();
+        this.$removables.push(background);
 
-        let getterLine = getLineFromNorth;
+        getLevelLine(getPositionHero()).forEach(($actor, $index, $array) => {
 
-        const orientation = stateOrientation.getState();
+            const position = new Vector2(($SIZE_CELL / 2) + (- ($array.length / 2) + $index) * $SIZE_CELL, 0);
 
-        if (orientation === 'EAST') {
+            const floor = this.$createActorFloor(position.clone());
+            this.$removables.push(floor);
 
-            getterLine = getLineFromEast;
-        }
+            switch ($actor) {
 
-        if (orientation === 'SOUTH') {
+                case 'Exit': {
 
-            getterLine = getLineFromSouth;
-        }
+                    const exit = this.$createActorExit(position.clone());
+                    this.$removables.push(exit);
 
-        if (orientation === 'WEST') {
+                    exit.addListener(STATES_EXIT.ENTERED, () => {
 
-            getterLine = getLineFromWest;
-        }
+                        this.$exiting = true;
+                    });
 
-        getterLine(getPositionHero()).forEach(($actor, $index, $array) => {
+                    break;
+                }
 
-            const floor = this.stage.createActor(ActorFloor)
-            .translate(new Vector2(16 + (- ($array.length / 2) + $index) * 32, 0));
+                case 'Hero': {
 
-            this.$actors.push(floor);
+                    const hero = this.$createActorHero(position.clone());
+                    this.$removables.push(hero);
 
-            const actor = this.stage.createActor(mapping.get($actor))
-            .translate(new Vector2(16 + (- ($array.length / 2) + $index) * 32, 0));
+                    this.$hero = hero;
+                    this.stage.setPointOfView(this.$hero);
 
-            if ($actor === 'Hero') {
+                    break;
+                }
 
-                this.stage.setPointOfView(actor);
+                case 'Hole': {
 
-                // this.stage.setPointOfView(new Actor(this.stage).translateTo(
+                    const hole = this.$createActorHole(position.clone());
+                    this.$removables.push(hole);
 
-                //     actor.translation.clone().add(new Vector2(0, -32))
-                // ));
+                    break;
+                }
 
-                this.$hero = actor;
+                case 'Wall': {
 
-                actor.setZIndex(1);
+                    const wall = this.$createActorWall(position.clone());
+                    this.$removables.push(wall);
+
+                    break;
+                }
             }
-
-            if ($actor === 'Exit') {
-
-                actor.addListener(STATES_EXIT.ENTERED, () => {
-
-                    this.$exiting = true;
-
-                    this.$camera = this.stage.createActor(Actor).translateTo(this.$hero.translation.clone());
-                    this.stage.setPointOfView(this.$camera);
-                });
-            }
-
-            this.$actors.push(actor);
         });
+    }
+
+    /**
+     * Snaps the 'hero' actor to the level grid.
+     * @private
+     */
+    $snapHero() {
+
+        const cell = this.$hero.translation.clone().multiply(new Vector2(1 / ($SIZE_CELL / 2), 1));
+        this.$hero.translateTo(new Vector2(Math.round(cell.x) * ($SIZE_CELL / 2), cell.y));
     }
 
     /**
@@ -219,74 +411,17 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
     onCreate() {
 
         this.$exiting = false;
-
-        /**/
-
-        // stages.getEntities({
-
-        //     $level: 'Underground1',
-        //     $layer: 'actors'
-        // })
-        // .forEach(($entity) => {
-
-        //     const {$identifier, $position, $type} = $entity;
-
-        //     if (mapping.has($type) === false) {
-
-        //         return;
-        //     }
-
-        //     const actor = this.stage.createActor(mapping.get($type))
-        //     .setIdentifier($identifier)
-        //     .translateTo($position.clone());
-
-        //     interactives.push(actor);
-        // });
-
-        // stages.getEntitiesData({
-
-        //     $level: 'Underground1',
-        //     $layer: 'interactions'
-        // })
-        // .map(($entity) => ({
-
-        //     $source: {
-
-        //         $identifier: $entity.fieldInstances[0].__value.entityIid,
-        //         $state: $entity.fieldInstances[1].__value
-        //     },
-        //     $target: {
-
-        //         $identifier: $entity.fieldInstances[2].__value.entityIid,
-        //         $action: $entity.fieldInstances[3].__value
-        //     }
-        // }))
-        // .forEach(($entity) => {
-
-        //     this.stage.actors.find(($actor) => ($actor.identifier === $entity.$source.$identifier))
-        //     .addListener($entity.$source.$state, () => {
-
-        //         this.stage.actors.find(($actor) => ($actor.identifier === $entity.$target.$identifier))
-        //         .trigger($entity.$target.$action);
-        //     })
-        // });
-
-        // interactives.forEach(($actor) => {
-
-        //     $actor.trigger('START');
-        // });
+        this.$removables = [];
 
         stateOrientation.setState('SOUTH');
 
         this.$createLevel();
+        this.$createLevelView();
 
-        this.$createView();
-
-        const getCommandCW = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LB) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.LEFT));
-        const getCommandCCW = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.RT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.RB) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.RIGHT));
+        const getCommandRotateClockwise = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LB) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.LEFT));
+        const getCommandRotateCounterClockwise = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.RT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.RB) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.RIGHT));
         const getCommandLeft = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LEFT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LS_LEFT) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.Q));
         const getCommandRight = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.RIGHT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LS_RIGHT) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.D));
-
 
         this.$machine = new FiniteStateMachine([
 
@@ -295,45 +430,170 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
                 $transitions: [
 
                     {
+                        $state: 'ROLLING_LEFT',
+                        $condition: ({$timer}) => ($timer >= $DURATION_COOLDOWN && getCommandLeft() === true && checkMoveHeroLeftFromOrientation() === true)
+                    },
+                    {
+                        $state: 'ROLLING_RIGHT',
+                        $condition: ({$timer}) => ($timer >= $DURATION_COOLDOWN && getCommandRight() === true && checkMoveHeroRightFromOrientation() === true)
+                    },
+                    {
+                        $state: 'ROTATING_CLOCKWISE',
+                        $condition: ({$timer}) => ($timer >= $DURATION_COOLDOWN && getCommandRotateClockwise() === true)
+                    },
+                    {
+                        $state: 'ROTATING_COUNTER_CLOCKWISE',
+                        $condition: ({$timer}) => ($timer >= $DURATION_COOLDOWN && getCommandRotateCounterClockwise() === true)
+                    }
+                ]
+            },
+            {
+                $state: 'ROLLING_LEFT',
+                $onEnter: () => {
+
+                    this.$hero.trigger(ACTIONS_HERO.ROLL);
+                },
+                $onTick: ({$timetick}) => {
+
+                    this.$hero.translate(new Vector2(- ($SIZE_CELL * $timetick) / $DURATION_STEP, 0));
+                },
+                $onLeave: () => {
+
+                    moveHeroLeftFromOrientation();
+                    this.$snapHero();
+                },
+                $transitions: [
+
+                    {
                         $state: 'EXITING',
-                        $condition: ({$timer}) => ($timer >= 1600 && this.$exiting === true)
+                        $condition: ({$timer}) => ($timer >= $DURATION_STEP && this.$exiting === true)
                     },
                     {
-                        $state: 'SWITCHING_CCW',
-                        $condition: ({$timer}) => (this.$exiting === false && $timer >= 200 && getCommandCCW() === true)
+                        $state: 'IDLE',
+                        $condition: ({$timer}) => ($timer >= $DURATION_STEP)
+                    }
+                ]
+            },
+            {
+                $state: 'ROLLING_RIGHT',
+                $onEnter: () => {
+
+                    this.$hero.trigger(ACTIONS_HERO.ROLL);
+                },
+                $onTick: ({$timetick}) => {
+
+                    this.$hero.translate(new Vector2(($SIZE_CELL * $timetick) / $DURATION_STEP, 0));
+                },
+                $onLeave: () => {
+
+                    moveHeroRightFromOrientation();
+                    this.$snapHero();
+                },
+                $transitions: [
+
+                    {
+                        $state: 'EXITING',
+                        $condition: ({$timer}) => ($timer >= $DURATION_STEP && this.$exiting === true)
                     },
                     {
-                        $state: 'SWITCHING_CW',
-                        $condition: ({$timer}) => (this.$exiting === false && $timer >= 200 && getCommandCW() === true)
-                    },
+                        $state: 'IDLE',
+                        $condition: ({$timer}) => ($timer >= $DURATION_STEP)
+                    }
+                ]
+            },
+            {
+                $state: 'ROTATING_CLOCKWISE',
+                $onEnter: () => {
+
+                    setOrientationClockwise();
+                    this.$createLevelView();
+
+                    this.addSound(new Sound({
+
+                        $audio: soundWoosh
+                    }));
+                },
+                $transitions: [
+
                     {
-                        $state: 'WALKING_LEFT',
-                        $condition: ({$timer}) => (this.$exiting === false && $timer >= 200 && getCommandLeft() === true && checkMoveHeroLeftFromOrientation() === true)
-                    },
+                        $state: 'IDLE',
+                        $condition: ({$timer}) => ($timer >= $DURATION_COOLDOWN)
+                    }
+                ]
+            },
+            {
+                $state: 'ROTATING_COUNTER_CLOCKWISE',
+                $onEnter: () => {
+
+                    setOrientationCounterClockwise();
+                    this.$createLevelView();
+
+                    this.addSound(new Sound({
+
+                        $audio: soundWoosh
+                    }));
+                },
+                $transitions: [
+
                     {
-                        $state: 'WALKING_RIGHT',
-                        $condition: ({$timer}) => (this.$exiting === false && $timer >= 200 && getCommandRight() === true && checkMoveHeroRightFromOrientation() === true)
+                        $state: 'IDLE',
+                        $condition: ({$timer}) => ($timer >= $DURATION_COOLDOWN)
                     }
                 ]
             },
             {
                 $state: 'EXITING',
-                $onEnter: ({$timetick}) => {
+                $onEnter: () => {
 
-                    [...this.$actors].forEach(($actor) => {
+                    this.$snapHero();
+
+                    this.$camera = this.stage.createActor(Actor).translateTo(this.$hero.translation.clone());
+                    this.stage.setPointOfView(this.$camera);
+
+                    this.$hero.trigger(ACTIONS_HERO.FLY);
+                },
+                $onTick: ({$timetick}) => {
+
+                    this.$hero.translate(new Vector2(0, ($SIZE_CELL * 2) * $timetick / 1000));
+                    this.$camera.translate(new Vector2(0, $SIZE_CELL * $timetick / 1000));
+                },
+                $transitions: [
+
+                    {
+                        $state: 'CLEANING',
+                        $condition: ({$timer}) => ($timer >= 1600)
+                    }
+                ]
+            },
+            {
+                $state: 'CLEANING',
+                $onEnter: async () => {
+
+                    [...this.$removables].forEach(($actor) => {
 
                         this.stage.removeActor($actor);
                     });
                 },
-                $onLeave: async () => {
+                $transitions: [
+
+                    {
+                        $state: 'LEFT',
+                        $condition: ({$timer}) => ($timer >= 1000)
+                    }
+                ]
+            },
+            {
+                $state: 'LEFT',
+                $onEnter: async () => {
 
                     const next = getNextLevel();
 
                     if (typeof next === 'undefined') {
 
-                        console.log('CREDITS')
-
                         await this.engine.preloadStage(StageCredits);
+
+                        stateLevelCurrent.setState(getFirstLevel());
+
                         this.engine.createStage(StageCredits);
 
                         return;
@@ -342,118 +602,12 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
                     stateLevelCurrent.setState(next);
 
                     this.engine.createStage(StagePrototype);
-                },
-                $transitions: [
-
-                    {
-                        $state: 'LEAVING',
-                        $condition: ({$timer}) => ($timer >= 1000)
-                    }
-                ]
-            },
-            {
-                $state: 'LEAVING'
-            },
-            {
-                $state: 'SWITCHING_CCW',
-                $onEnter: () => {
-
-                    setOrientationCCW();
-                    this.$createView();
-
-                    this.addSound(new Sound({
-
-                        $audio: soundWoosh
-                    }));
-                },
-                $transitions: [
-
-                    {
-                        $state: 'IDLE',
-                        $condition: ({$timer}) => ($timer >= 200)
-                    }
-                ]
-            },
-            {
-                $state: 'SWITCHING_CW',
-                $onEnter: () => {
-
-                    setOrientationCW();
-                    this.$createView();
-
-                    this.addSound(new Sound({
-
-                        $audio: soundWoosh
-                    }));
-                },
-                $transitions: [
-
-                    {
-                        $state: 'IDLE',
-                        $condition: ({$timer}) => ($timer >= 200)
-                    }
-                ]
-            },
-            {
-                $state: 'WALKING_LEFT',
-                $onEnter: () => {
-
-                    // this.$createView();
-
-                    this.addSound(new Sound({
-
-                        $audio: soundRoll
-                    }));
-                },
-                $onTick: ({$timetick}) => {
-
-                    this.$hero.translate(new Vector2(- (32 * $timetick) / 200, 0));
-                },
-                $onLeave: () => {
-
-                    moveHeroLeftFromOrientation();
-                },
-                $transitions: [
-
-                    {
-                        $state: 'IDLE',
-                        $condition: ({$timer}) => ($timer >= 200)
-                    }
-                ]
-            },
-            {
-                $state: 'WALKING_RIGHT',
-                $onEnter: () => {
-
-                    // this.$createView();
-
-                    this.addSound(new Sound({
-
-                        $audio: soundRoll
-                    }));
-                },
-                $onTick: ({$timetick}) => {
-
-                    this.$hero.translate(new Vector2((32 * $timetick) / 200, 0));
-                },
-                $onLeave: () => {
-
-                    moveHeroRightFromOrientation();
-                },
-                $transitions: [
-
-                    {
-                        $state: 'IDLE',
-                        $condition: ({$timer}) => ($timer >= 200)
-                    }
-                ]
+                }
             }
         ]);
 
         this.$machine.initiate('IDLE');
     }
-
-    $exit;
 
     /**
      * @type {Actor['onTick']}
@@ -461,39 +615,6 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
     onTick($timetick) {
 
         this.$machine.tick($timetick);
-
-        if (typeof this.$camera !== 'undefined') {
-
-            this.$camera.translate(new Vector2(0, 32 * $timetick / 1000));
-        }
-
-        if (this.$exiting) {
-
-            this.$hero.translate(new Vector2(0, 64 * $timetick / 1000));
-        }
-
-        if (this.$exiting && this.$exit !== true) {
-
-            this.$exit = true;
-
-            this.$hero.actionFly();
-
-            this.addSound(new Sound({
-
-                $audio: soundBreathe
-            }));
-            // this.stage.removeActor(this.$controls);
-        }
-
-        // this.$temple.translateTo(this.$hero.translation.clone());
-        // this.$controls.translateTo(
-
-        //     new Vector2(
-
-        //         Math.floor(this.$hero.translation.clone().x),
-        //         Math.floor(this.$hero.translation.clone().y)
-        //     )
-        // );
     }
 }
 
