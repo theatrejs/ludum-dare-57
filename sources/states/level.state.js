@@ -1,5 +1,4 @@
-import {Actor, State, Vector2} from '@theatrejs/theatrejs';
-import ActorHero from 'actors/hero/hero.actor.js';
+import {State, Vector2} from '@theatrejs/theatrejs';
 import {getOrientation} from './orientation.state.js';
 
 /**
@@ -23,8 +22,41 @@ function getLevel() {
 }
 
 /**
- * Gets the line of actors from the east view.
- * @param {Vector2} $position The position of the 'Hero' actor.
+ * Gets a line of grid cells from the given position.
+ * @param {Vector2} $position The given position.
+ * @returns {Array<string>}
+ */
+function getLevelLine($position) {
+
+    const orientation = getOrientation();
+
+    switch (orientation) {
+
+        case 'NORTH': {
+
+            return getLineFromNorth($position);
+        }
+
+        case 'WEST': {
+
+            return getLineFromWest($position);
+        }
+
+        case 'SOUTH': {
+
+            return getLineFromSouth($position);
+        }
+
+        case 'EAST': {
+
+            return getLineFromEast($position);
+        }
+    }
+}
+
+/**
+ * Gets a line of grid cells from the east view.
+ * @param {Vector2} $position The given position.
  * @returns {Array<string>}
  */
 function getLineFromEast($position) {
@@ -33,8 +65,8 @@ function getLineFromEast($position) {
 }
 
 /**
- * Gets the line of actors from the north view.
- * @param {Vector2} $position The position of the 'Hero' actor.
+ * Gets a line of grid cells from the north view.
+ * @param {Vector2} $position The given position.
  * @returns {Array<string>}
  */
 function getLineFromNorth($position) {
@@ -43,8 +75,8 @@ function getLineFromNorth($position) {
 }
 
 /**
- * Gets the line of actors from the south view.
- * @param {Vector2} $position The position of the 'Hero' actor.
+ * Gets a line of grid cells from the south view.
+ * @param {Vector2} $position The given position.
  * @returns {Array<string>}
  */
 function getLineFromSouth($position) {
@@ -55,8 +87,8 @@ function getLineFromSouth($position) {
 }
 
 /**
- * Gets the line of actors from the West view.
- * @param {Vector2} $position The position of the 'Hero' actor.
+ * Gets a line of grid cells from the West view.
+ * @param {Vector2} $position The given position.
  * @returns {Array<string>}
  */
 function getLineFromWest($position) {
@@ -94,8 +126,6 @@ function getPositionHero() {
 function checkMovable($position) {
 
     const cell = stateLevel.getState()[$position.x][$position.y];
-
-    console.log(cell)
 
     if (cell === 'Hole') {
 
@@ -382,7 +412,6 @@ function moveHeroWest() {
 
     const level = stateLevel.getState();
 
-
     if (level[position.y][position.x - 1] === 'Exit') {
 
         stateLevel.setState(level);
@@ -401,6 +430,7 @@ export {
     stateLevel,
 
     getLevel,
+    getLevelLine,
     getLineFromEast,
     getLineFromNorth,
     getLineFromSouth,

@@ -13,14 +13,14 @@ const stateStage = new State(StagePrototype);
  * Gets the stage.
  * @returns {typeof Stage}
  */
-function getStateStage() {
+function getStage() {
 
     return stateStage.getState();
-};
+}
 
 export {
 
     stateStage,
 
-    getStateStage
+    getStage
 };

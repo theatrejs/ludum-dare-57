@@ -1,4 +1,7 @@
-import {FACTORIES, Stage, Vector2, Vector3} from '@theatrejs/theatrejs';
+import {FACTORIES, Stage} from '@theatrejs/theatrejs';
+
+import {getColor} from 'states/color.state.js';
+import {getResolution} from 'states/resolution.state.js';
 
 import ControllerPrototype from './prototype.controller.js';
 
@@ -12,8 +15,8 @@ class StagePrototype extends FACTORIES.StageWithPreloadables([
      */
     onCreate() {
 
-        this.engine.setColor(new Vector3(6 / 255, 6 / 255, 8 / 255));
-        this.engine.setResolution(new Vector2(320, 240));
+        this.engine.setColor(getColor());
+        this.engine.setResolution(getResolution());
 
         this.createActor(ControllerPrototype);
     }

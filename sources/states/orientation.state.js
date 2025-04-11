@@ -1,8 +1,7 @@
-import {Actor, State, Vector2} from '@theatrejs/theatrejs';
-import ActorHero from 'actors/hero/hero.actor.js';
+import {State} from '@theatrejs/theatrejs';
 
 /**
- * @typedef {('EAST' | 'NORTH' | 'SOUTH' | 'WEST')} TypeOrientation The representation of level orientation.
+ * @typedef {('EAST' | 'NORTH' | 'SOUTH' | 'WEST')} TypeOrientation The representation of a level orientation.
  */
 
 /**
@@ -24,7 +23,7 @@ function getOrientation() {
 /**
  * Sets the counter-clockwise orientation of the level.
  */
-function setOrientationCCW() {
+function setOrientationCounterClockwise() {
 
     switch (stateOrientation.getState()) {
 
@@ -61,7 +60,7 @@ function setOrientationCCW() {
 /**
  * Sets the clockwise orientation of the level.
  */
-function setOrientationCW() {
+function setOrientationClockwise() {
 
     switch (stateOrientation.getState()) {
 
@@ -100,6 +99,6 @@ export {
     stateOrientation,
 
     getOrientation,
-    setOrientationCCW,
-    setOrientationCW
+    setOrientationCounterClockwise,
+    setOrientationClockwise
 };

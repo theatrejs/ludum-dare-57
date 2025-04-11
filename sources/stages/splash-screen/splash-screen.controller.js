@@ -1,11 +1,10 @@
 import {Actor, EVENTCODES, FACTORIES, FiniteStateMachine, Vector2} from '@theatrejs/theatrejs';
 
-import {getStateStage} from 'states/stage.state.js';
-import {getStateZIndexInterface} from 'states/z-indexes.state.js';
+import {getStage} from 'states/stage.state.js';
+import {getZIndexInterface} from 'states/z-indexes.state.js';
 
 import ActorPressAnyKey from './actors/press-any-key/press-any-key.actor.js';
 import * as ACTIONS_PRESS_ANY_KEY from './actors/press-any-key/press-any-key.actions.js';
-
 import ActorTitle from './actors/title/title.actor.js';
 
 class ControllerSplashScreen extends FACTORIES.ActorWithPreloadables([
@@ -62,7 +61,7 @@ class ControllerSplashScreen extends FACTORIES.ActorWithPreloadables([
 
         this.$preloaded = false;
 
-        this.engine.preloadStage(getStateStage()).then(() => {
+        this.engine.preloadStage(getStage()).then(() => {
 
             this.$preloaded = true;
         });
@@ -85,7 +84,7 @@ class ControllerSplashScreen extends FACTORIES.ActorWithPreloadables([
 
                     this.$actorTitle = this.stage.createActor(ActorTitle)
                     .translateTo(new Vector2(0, 64))
-                    .setZIndex(getStateZIndexInterface());
+                    .setZIndex(getZIndexInterface());
                 },
                 $transitions: [
 
@@ -101,7 +100,7 @@ class ControllerSplashScreen extends FACTORIES.ActorWithPreloadables([
 
                     this.$actorPressAnyKey = this.stage.createActor(ActorPressAnyKey)
                     .translateTo(new Vector2(0, -96))
-                    .setZIndex(getStateZIndexInterface());
+                    .setZIndex(getZIndexInterface());
                 },
                 $transitions: [
 
@@ -150,7 +149,7 @@ class ControllerSplashScreen extends FACTORIES.ActorWithPreloadables([
                 $state: 'LEFT',
                 $onEnter: () => {
 
-                    this.engine.createStage(getStateStage());
+                    this.engine.createStage(getStage());
                 }
             }
         ]);

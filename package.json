@@ -3,8 +3,8 @@
     "dependencies": {
 
         "@theatrejs/plugin-aseprite": "1.7.1",
-        "@theatrejs/plugin-ldtk": "1.1.0",
-        "@theatrejs/theatrejs": "1.15.0"
+        "@theatrejs/plugin-ldtk": "1.2.0",
+        "@theatrejs/theatrejs": "1.16.0"
     },
     "description": "🎮 Ludum Dare 57 - Souls Rider 1D.",
     "devDependencies": {

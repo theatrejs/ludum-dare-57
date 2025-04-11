@@ -1,47 +1,52 @@
-import {Actor, State, Vector2} from '@theatrejs/theatrejs';
-import ActorHero from 'actors/hero/hero.actor.js';
-import {getOrientation} from './orientation.state.js';
+import {State} from '@theatrejs/theatrejs';
 
-/**
- * @typedef {('Underground0' | 'Underground1' | 'Underground2')} TypeNameLevel The level names.
- */
+const levels = Object.freeze([
 
-/**
- * The state manager of the levels.
- * @type {State<Array<TypeNameLevel>>}
- * @constant
- */
-const stateLevels = new State([
-
-    'Underground0',
-    'Underground1',
-    'Underground2',
-    'Underground3',
-    'Underground4',
-    'Underground5',
-    'Underground6',
-    'Underground7',
-    'Underground8',
-    'Underground9',
+    'Stage1',
+    'Stage2',
+    'Stage3',
+    'Stage4',
+    'Stage5',
+    'Stage6',
+    'Stage7',
+    'Stage8',
+    'Stage9',
+    'Stage10'
 ]);
 
 /**
+ * The state manager of the levels.
+ * @type {State<typeof levels>}
+ * @constant
+ */
+const stateLevels = new State(levels);
+
+/**
+ * Gets the first level.
+ * @returns {string}
+ */
+function getFirstLevel() {
+
+    const levels = stateLevels.getState();
+
+    return levels[0];
+}
+
+/**
  * Gets the next level.
- * @returns {TypeNameLevel | undefined}
+ * @returns {string | undefined}
  */
 function getNextLevel() {
 
     const levels = stateLevels.getState();
     const current = stateLevelCurrent.getState();
 
-    console.log(levels[levels.indexOf(current) + 1])
-
     return levels[levels.indexOf(current) + 1];
 }
 
 /**
  * The state manager of the levels.
- * @type {State<TypeNameLevel>}
+ * @type {State<string>}
  * @constant
  */
 const stateLevelCurrent = new State(stateLevels.getState()[0]);
@@ -51,5 +56,6 @@ export {
     stateLevelCurrent,
     stateLevels,
 
+    getFirstLevel,
     getNextLevel
 };
