@@ -1,4 +1,4 @@
-import {Actor, EVENTCODES, FACTORIES, FiniteStateMachine, Vector2} from '@theatrejs/theatrejs';
+import {Actor, EVENT_CODES, FACTORIES, FiniteStateMachine, Vector2} from '@theatrejs/theatrejs';
 
 import {getStage} from 'states/stage.state.js';
 import {getZIndexInterface} from 'states/z-indexes.state.js';
@@ -108,10 +108,10 @@ class ControllerSplashScreen extends FACTORIES.ActorWithPreloadables([
                         $state: 'SELECTED',
                         $condition: () => (
 
-                            this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.A) === true
-                            || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.START) === true
-                            || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.ENTER) === true
-                            || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.SPACE) === true
+                            this.engine.getInput(EVENT_CODES.GAMEPAD_XBOX.A) === true
+                            || this.engine.getInput(EVENT_CODES.GAMEPAD_XBOX.START) === true
+                            || this.engine.getInput(EVENT_CODES.KEYBOARD_AZERTY.ENTER) === true
+                            || this.engine.getInput(EVENT_CODES.KEYBOARD_AZERTY.SPACE) === true
                         )
                     }
                 ]

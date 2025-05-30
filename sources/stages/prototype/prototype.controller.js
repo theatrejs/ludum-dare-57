@@ -1,4 +1,4 @@
-import {Actor, EVENTCODES, FACTORIES, FiniteStateMachine, Sound, Vector2} from '@theatrejs/theatrejs';
+import {Actor, EVENT_CODES, FACTORIES, FiniteStateMachine, Sound, Vector2} from '@theatrejs/theatrejs';
 
 import {checkMoveHeroLeftFromOrientation, checkMoveHeroRightFromOrientation, getLevelLine, getPositionHero, moveHeroLeftFromOrientation, moveHeroRightFromOrientation, stateLevel} from 'states/level.state.js';
 import {getFirstLevel, getNextLevel, stateLevelCurrent} from 'states/levels.state.js';
@@ -418,10 +418,10 @@ class ControllerPrototype extends FACTORIES.ActorWithPreloadables([
         this.$createLevel();
         this.$createLevelView();
 
-        const getCommandRotateClockwise = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LB) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.LEFT));
-        const getCommandRotateCounterClockwise = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.RT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.RB) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.RIGHT));
-        const getCommandLeft = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LEFT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LS_LEFT) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.Q));
-        const getCommandRight = () => (this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.RIGHT) || this.engine.getInput(EVENTCODES.GAMEPAD_XBOX.LS_RIGHT) || this.engine.getInput(EVENTCODES.KEYBOARD_AZERTY.D));
+        const getCommandRotateClockwise = () => (this.engine.getInput(EVENT_CODES.GAMEPAD_XBOX.LT) || this.engine.getInput(EVENT_CODES.GAMEPAD_XBOX.LB) || this.engine.getInput(EVENT_CODES.KEYBOARD_AZERTY.LEFT));
+        const getCommandRotateCounterClockwise = () => (this.engine.getInput(EVENT_CODES.GAMEPAD_XBOX.RT) || this.engine.getInput(EVENT_CODES.GAMEPAD_XBOX.RB) || this.engine.getInput(EVENT_CODES.KEYBOARD_AZERTY.RIGHT));
+        const getCommandLeft = () => (this.engine.getInput(EVENT_CODES.GAMEPAD_XBOX.LEFT) || this.engine.getInput(EVENT_CODES.GAMEPAD_XBOX.LS_LEFT) || this.engine.getInput(EVENT_CODES.KEYBOARD_AZERTY.Q));
+        const getCommandRight = () => (this.engine.getInput(EVENT_CODES.GAMEPAD_XBOX.RIGHT) || this.engine.getInput(EVENT_CODES.GAMEPAD_XBOX.LS_RIGHT) || this.engine.getInput(EVENT_CODES.KEYBOARD_AZERTY.D));
 
         this.$machine = new FiniteStateMachine([
 

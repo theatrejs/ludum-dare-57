@@ -1,4 +1,4 @@
-import {AABB, Actor, Collider, COLLIDERTYPES, FACTORIES, Sound, Vector2} from '@theatrejs/theatrejs';
+import {AABB, Actor, Collider, COLLIDER_TYPES, FACTORIES, Sound, Vector2} from '@theatrejs/theatrejs';
 import * as PLUGIN_ASEPRITE from '@theatrejs/plugin-aseprite';
 
 import * as STATES from './exit.states.js';
@@ -49,7 +49,7 @@ class ActorExit extends FACTORIES.ActorWithPreloadables([
                 new Vector2(8, 8)
             ),
             $traversable: true,
-            $type: COLLIDERTYPES.STATIC
+            $type: COLLIDER_TYPES.STATIC
         }));
 
         this.addSound(new Sound({

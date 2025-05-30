@@ -1,4 +1,4 @@
-import {AABB, Actor, Collider, COLLIDERTYPES, FACTORIES, Sound, Vector2} from '@theatrejs/theatrejs';
+import {AABB, Actor, Collider, COLLIDER_TYPES, FACTORIES, Sound, Vector2} from '@theatrejs/theatrejs';
 import * as PLUGIN_ASEPRITE from '@theatrejs/plugin-aseprite';
 
 import * as ACTIONS from './hero.actions.js';
@@ -113,7 +113,7 @@ class ActorHero extends FACTORIES.ActorWithPreloadables([
                 new Vector2(8, 8)
             ),
             $traversable: true,
-            $type: COLLIDERTYPES.DYNAMIC
+            $type: COLLIDER_TYPES.DYNAMIC
         }));
     }
 

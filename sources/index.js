@@ -1,9 +1,8 @@
-import {Engine, ExtensionGamepad, ExtensionPointer} from '@theatrejs/theatrejs';
+import {Engine, ExtensionGamepad} from '@theatrejs/theatrejs';
 
 import StageSplashScreen from 'stages/splash-screen/splash-screen.stage.js';
 
 ExtensionGamepad.activate();
-ExtensionPointer.activate();
 
 const engine = new Engine();
 engine.initiate(25);
